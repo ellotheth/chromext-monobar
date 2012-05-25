@@ -62,5 +62,5 @@ function getCaretPosition(node) {
 $('textarea').live('keyup', function() { getCaretPosition($(this)); });
 $('textarea').live('click', function() { getCaretPosition($(this)); });
 $('textarea')
-    .live('blur', function() { $('#' + id).hide(); });
+    .live('blur', function() { $('#' + id).remove(); });
 
