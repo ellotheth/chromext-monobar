@@ -1,5 +1,5 @@
 {
-    "name": "Textbox Status Bar",
+    "name": "Monobar",
     "version": "0.1",
     "manifest_version": 2,
     "description": "Add a status bar to text boxen",
