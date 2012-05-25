@@ -12,6 +12,8 @@ String.prototype.rpad = function(padString, length) {
     return str;
 };
 
+var id = chrome.i18n.getMessage('@@extension_id') + '-monobar';
+
 function getCaretPosition(node) {
     var linenum = 1;
     var linestart = -1;
@@ -32,9 +34,9 @@ function getCaretPosition(node) {
     var x = node.position().left;
     var y = node.outerHeight(true) + node.position().top;
     
-    if ($('#chromextTextareaStatusBar').length < 1) {
+    if ($('#' + id).length < 1) {
         node.after($('<div></div>')
-                   .attr('id', 'chromextTextareaStatusBar')
+                   .attr('id', id)
                    .css({position: 'absolute',
                          top: y + 'px',
                          left: x + 'px',
@@ -51,7 +53,7 @@ function getCaretPosition(node) {
     var linenumLabel = ('Ln: ' + linenum).rpad(' ', 8);
     var charcountLabel = ('Len: ' + content.length).lpad(' ', 10);
 
-    $('#chromextTextareaStatusBar')
+    $('#' + id)
         .html(linenumLabel + ' ' + colnumLabel + charcountLabel)
         .css({top: y + 'px', left: x + 'px'})
         .show();
@@ -60,5 +62,5 @@ function getCaretPosition(node) {
 $('textarea').live('keyup', function() { getCaretPosition($(this)); });
 $('textarea').live('click', function() { getCaretPosition($(this)); });
 $('textarea')
-    .live('blur', function() { $('#chromextTextareaStatusBar').hide(); });
+    .live('blur', function() { $('#' + id).hide(); });
 
