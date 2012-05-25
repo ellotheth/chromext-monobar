@@ -13,23 +13,24 @@ String.prototype.rpad = function(padString, length) {
 };
 
 function getCaretPosition(node) {
-    var caret, linestart, linenum, x, y, statusbar;
-    var colnumLabel, linenumLabel, charcountLabel;
     var linenum = 1;
+    var linestart = -1;
     var el = node.get(0);
     var content = node.val();
     
-    caret = (el.selectionStart || el.selectionStart == '0')
+    var caret = (el.selectionStart || el.selectionStart == '0')
         ? el.selectionStart : 0;
     
-    linestart = caret;
-    while (linestart-- > 0) if (content.charAt(linestart) == '\n') linenum++;
-
-    linestart = caret;
-    while (linestart-- > 0) if (content.charAt(linestart) == '\n') break;
+    var cnt = caret;
+    while (cnt-- > 0) {
+        if (content.charAt(cnt) == '\n') {
+            linenum++;
+            if (linestart < 0) linestart = cnt;
+        }
+    }
     
-    x = node.position().left;
-    y = node.outerHeight(true) + node.position().top;
+    var x = node.position().left;
+    var y = node.outerHeight(true) + node.position().top;
     
     if ($('#chromextTextareaStatusBar').length < 1) {
         node.after($('<div></div>')
@@ -46,9 +47,9 @@ function getCaretPosition(node) {
                         }));
     }
     
-    colnumLabel= ('Col: ' + (caret - linestart)).rpad(' ', 10);
-    linenumLabel = ('Ln: ' + linenum).rpad(' ', 8);
-    charcountLabel = ('Len: ' + content.length).lpad(' ', 10);
+    var colnumLabel= ('Col: ' + (caret - linestart)).rpad(' ', 10);
+    var linenumLabel = ('Ln: ' + linenum).rpad(' ', 8);
+    var charcountLabel = ('Len: ' + content.length).lpad(' ', 10);
 
     $('#chromextTextareaStatusBar')
         .html(linenumLabel + ' ' + colnumLabel + charcountLabel)
