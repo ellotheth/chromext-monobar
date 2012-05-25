@@ -1,20 +1,14 @@
 function getCaretPosition(node) {
-    var caret = 0;
-    var linestart = 0;
+    var caret, linestart;
     var el = node.get(0);
     var content = node.val();
     
-    if (el.selectionStart || el.selectionStart == '0') caret = el.selectionStart;
+    caret = (el.selectionStart || el.selectionStart == '0') ? el.selectionStart : 0;
     
     linestart = caret;
-    while (linestart > 0) {
-        if (content.charAt(linestart) == '\n') {
-            linestart++;
-            break;
-        } else linestart--;
-    }
+    while (linestart-- > 0) if (content.charAt(linestart) == '\n') break;
     
-    $('#caretPosition').html(caret - linestart + 1);
+    $('#caretPosition').html(caret - linestart);
 }
 
 $('textarea').live('keyup', function() { getCaretPosition($(this)); });
