@@ -1,0 +1,11 @@
+Monobar: A Chrome extension for text boxen.
+
+Install
+
+    Fire up Chrome, go to the Download page! I know, it's complicated.
+    https://github.com/ellotheth/chromext-monobar/downloads
+
+Known issues
+
+    - Special-snowflake text boxes (e.g. anything Google made) don't work.
+
