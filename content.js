@@ -41,7 +41,6 @@ function getCaretPosition(node) {
                          top: y + 'px',
                          left: x + 'px',
                          padding: '0 .5em',
-                         fontSize: '.8em',
                          fontFamily: 'monospace',
                          backgroundColor: 'white',
                          border: '1px solid gray',
@@ -50,11 +49,11 @@ function getCaretPosition(node) {
     }
     
     var colnumLabel= ('Col: ' + (caret - linestart)).rpad(' ', 10);
-    var linenumLabel = ('Ln: ' + linenum).rpad(' ', 8);
+    var linenumLabel = ('Ln: ' + linenum).rpad(' ', 10);
     var charcountLabel = ('Len: ' + content.length).lpad(' ', 10);
 
     $('#' + id)
-        .html(linenumLabel + ' ' + colnumLabel + charcountLabel)
+        .html(linenumLabel + ' ' + colnumLabel + ' ' + charcountLabel)
         .css({top: y + 'px', left: x + 'px'})
         .show();
 }
