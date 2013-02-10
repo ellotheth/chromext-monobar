@@ -4,6 +4,16 @@ Enhance `<textarea>` elements with a status bar that displays current line, curr
 
 Inspired by [Linus Torvald's Github rant][3].
 
+## Screenshots
+
+### Bar:
+
+![monobar displays below supported &lt;textareas&gt;](https://raw.github.com/ellotheth/chromext-monobar/master/images/monobar-ss-bar.png)
+
+### Menu:
+
+![context menu for any editable element](https://raw.github.com/ellotheth/chromext-monobar/master/images/monobar-ss-menu.png)
+
 ## Install
 
 ### From source
