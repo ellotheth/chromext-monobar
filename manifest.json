@@ -1,8 +1,12 @@
 {
     "name": "Monobar",
-    "version": "0.2",
+    "version": "0.3",
     "manifest_version": 2,
     "description": "Add a status bar to text boxen",
+    "permissions": ["contextMenus"],
+    "background": {
+        "scripts": ["menu.js"]
+    },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
         "js": ["jquery.min.js", "content.js"]

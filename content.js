@@ -14,6 +14,27 @@ String.prototype.rpad = function(padString, length) {
 
 var id = chrome.i18n.getMessage('@@extension_id') + '-monobar';
 
+/* Capture all context menu events and grab the target */
+var editable = null;
+document.addEventListener("contextmenu", function(e) {
+    editable = e.target;
+}, true);
+
+/* When the monobar context menu item is selected, get the last context menu
+ * target and toggle the font face.
+ */
+chrome.extension.onMessage.addListener(function(message, sender, response) {
+    if (message == 'monobar-changefont') {
+        var style = getComputedStyle(editable, '');
+        var font = style.getPropertyValue('font-family');
+        if (font && font.search("monospace") >= 0) {
+            editable.style.setProperty('font-family', 'inherit', 'important');
+        } else {
+            editable.style.setProperty('font-family', 'monospace, ' + id, 'important');
+        }
+    }
+});
+
 function getCaretPosition(node) {
     var linenum = 1;
     var linestart = -1;
