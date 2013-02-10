@@ -1,12 +1,14 @@
 # Monobar: A Chrome extension for text boxen.
 
-Enhance `<textarea>`s with a status bar that displays line count, character count, and current column (position in the current line). Inspired by [Linus Torvald's Github rant][3].
+Enhance `<textarea>` elements with a status bar that displays current line, current column (position in the current line) and total character count. Add monospaced font toggle for anything editable (Gmail compose windows, Github issues/comments, etc.).
+
+Inspired by [Linus Torvald's Github rant][3].
 
 ## Install
 
 ### From source
 
-1. Clone the repo: `$ git clone git@github.com:ellotheth/chromext-monobar.git`
+1. Clone the repo: `$ git clone git://github.com/ellotheth/chromext-monobar.git`
 2. Visit the extension management page in Chrome: _Menu_ --> _Tools_ --> _Extensions_
 3. Turn on _Developer Mode_
 4. Click _Load unpacked extension..._ and browse to the repo clone.
